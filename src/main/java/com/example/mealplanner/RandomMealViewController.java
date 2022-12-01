@@ -12,6 +12,7 @@ public class RandomMealViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         try {
             APIUtility.getRandomRecipe();
         } catch (IOException e) {

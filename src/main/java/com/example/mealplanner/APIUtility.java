@@ -19,11 +19,26 @@ public class APIUtility {
      * search term
      * @return ApiResponse is the Java object created from the JSON
      */
-    public static void getRandomRecipe() throws IOException, InterruptedException {
+    public static void getRandomRecipe(String query[], String recipeAmount) throws IOException, InterruptedException {
+
+        String url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?";
+
+        for (String keyWord: query) {
+            if(keyWord.contains(","))
+            {
+                keyWord.replace(",","%2C");
+            }
+            if(keyWord.contains(" "))
+            {
+                keyWord.replace(" ","%20");
+            }
+
+        }
+        url += "&instructionsRequired=true&addRecipeInformation=true&number=" + recipeAmount;
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?tags=vegetarian%2Cdessert&number=1"))
+                .uri(URI.create(url))
                 .header("X-RapidAPI-Key", "70511a685emsh66d197d7522932fp1cf9b2jsn2a45ba6cc657")
                 .header("X-RapidAPI-Host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
                 .method("GET", HttpRequest.BodyPublishers.noBody())
