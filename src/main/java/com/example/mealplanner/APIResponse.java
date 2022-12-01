@@ -6,17 +6,17 @@ import java.util.List;
 
 public class APIResponse {
 
-    private Results[] results;
+    private Recipe[] results;
 
-    public APIResponse(Results[] recipes) {
+    public APIResponse(Recipe[] recipes) {
         setRecipes(recipes);
     }
 
-    public List<Results> getRecipes() {
+    public List<Recipe> getRecipes() {
         return Arrays.asList(results);
     }
 
-    public void setRecipes(Results[] recipes) {
+    public void setRecipes(Recipe[] recipes) {
         this.results = recipes;
     }
 }
