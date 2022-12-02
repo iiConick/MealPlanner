@@ -1,0 +1,38 @@
+.button {
+    -fx-background-radius: 20px;
+    -fx-background-color: #8C9A9E;
+    -fx-text-fill: #FFF;
+}
+.root
+{
+    -fx-background-color: #D7E9EE;
+}
+.label
+{
+    -fx-text-fill: #0C414F;
+}
+.list-view {
+    -fx-background-color: #38626E;
+}
+
+.list-view .list-cell:hover {
+    -fx-background-color: #3685a1;
+}
+
+.list-view .list-cell:selected {
+    -fx-background-color: #434343;
+}
+
+.list-view .list-cell {
+    -fx-background-color: #38626E;
+    -fx-text-fill: white;
+}
+
+.list-view .label {
+    -fx-text-fill: white;
+}
+
+.text-area .content
+{
+    -fx-background-color: #E3F9FF;
+}

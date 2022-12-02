@@ -35,6 +35,22 @@ public class APIUtility {
         return gson.fromJson(response.body(), APIResponse.class);
 
     }
+
+    public static RecipeDetails getRecipeDetails(int id) throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + id + "/information"))
+                .header("X-RapidAPI-Key", "70511a685emsh66d197d7522932fp1cf9b2jsn2a45ba6cc657")
+                .header("X-RapidAPI-Host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com")
+                .method("GET", HttpRequest.BodyPublishers.noBody())
+                .build();
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+
+        Gson gson = new Gson();
+        return gson.fromJson(response.body(), RecipeDetails.class);
+
+    }
+
+
 //    public static Image getNutritionFacts(int id) throws IOException, InterruptedException {
 //        String url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + id + "/nutritionLabel.png";
 //        HttpRequest request = HttpRequest.newBuilder()

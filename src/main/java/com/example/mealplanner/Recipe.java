@@ -5,17 +5,6 @@ public class Recipe {
     private String title;
     private int readyInMinutes;
     private String image;
-    private String[] dishTypes;
-    private String[] cuisines;
-    private String sourceUrl;
-    private String instructions;
-    private String summary;
-    private String[] diets;
-    private String[] occasions;
-    private boolean vegetarian;
-    private boolean vegan;
-    private boolean glutenFree;
-    private boolean dairyFree;
     private int servings;
     private int cookingMinutes;
     private int preparationMinutes;
@@ -23,24 +12,11 @@ public class Recipe {
 
 
 
-    public Recipe(String title, int readyInMinutes, String image, String[] dishTypes, String[] cuisines, String sourceUrl, String instructions, String summary, String[] diets,
-                  String[] occasions, boolean vegetarian, boolean vegan, boolean glutenFree,
-                  boolean dairyFree, int servings, int cookingMinutes, int preparationMinutes, int id) {
+    public Recipe(String title, int readyInMinutes, String image, int servings, int cookingMinutes, int preparationMinutes, int id) {
 
         setTitle(title);
         setReadyInMinutes(readyInMinutes);
         setImage(image);
-        setDishTypes(dishTypes);
-        setCuisines(cuisines);
-        setSourceUrl(sourceUrl);
-        setInstructions(instructions);
-        setSummary(summary);
-        setDiets(diets);
-        setOccasions(occasions);
-        setVegetarian(vegetarian);
-        setVegan(vegan);
-        setGlutenFree(glutenFree);
-        setDairyFree(dairyFree);
         setCookingMinutes(cookingMinutes);
         setPreparationMinutes(preparationMinutes);
         setServings(servings);
@@ -72,93 +48,6 @@ public class Recipe {
         this.image = image;
     }
 
-    public String[] getDishTypes() {
-        return dishTypes;
-    }
-
-    public void setDishTypes(String[] dishTypes) {
-        this.dishTypes = dishTypes;
-    }
-
-    public String[] getCuisines() {
-        return cuisines;
-    }
-
-    public void setCuisines(String[] cuisines) {
-        this.cuisines = cuisines;
-    }
-
-    public String getSourceUrl() {
-        return sourceUrl;
-    }
-
-    public void setSourceUrl(String sourceUrl) {
-        this.sourceUrl = sourceUrl;
-    }
-
-    public String getInstructions() {
-        return instructions;
-    }
-
-    public void setInstructions(String instructions) {
-        this.instructions = instructions;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
-
-    public String[] getDiets() {
-        return diets;
-    }
-
-    public void setDiets(String[] diets) {
-        this.diets = diets;
-    }
-
-    public String[] getOccasions() {
-        return occasions;
-    }
-
-    public void setOccasions(String[] occasions) {
-        this.occasions = occasions;
-    }
-
-    public boolean isVegetarian() {
-        return vegetarian;
-    }
-
-    public void setVegetarian(boolean vegetarian) {
-        this.vegetarian = vegetarian;
-    }
-
-    public boolean isVegan() {
-        return vegan;
-    }
-
-    public void setVegan(boolean vegan) {
-        this.vegan = vegan;
-    }
-
-    public boolean isGlutenFree() {
-        return glutenFree;
-    }
-
-    public void setGlutenFree(boolean glutenFree) {
-        this.glutenFree = glutenFree;
-    }
-
-    public boolean isDairyFree() {
-        return dairyFree;
-    }
-
-    public void setDairyFree(boolean dairyFree) {
-        this.dairyFree = dairyFree;
-    }
     public int getServings() {
         return servings;
     }
@@ -190,5 +79,10 @@ public class Recipe {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String toString()
+    {
+        return String.format("%s",title);
     }
 }

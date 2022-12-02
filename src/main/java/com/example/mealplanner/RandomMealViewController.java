@@ -45,7 +45,12 @@ public class RandomMealViewController implements Initializable {
     private Label totalTimeLabel;
 
     @FXML
+    private Label mealsFoundLabel;
+
+    @FXML
     private VBox selectedVBox;
+
+
 
     @FXML
     void getDetails(ActionEvent event) throws IOException, InterruptedException {
@@ -62,8 +67,14 @@ public class RandomMealViewController implements Initializable {
             listView.getItems().clear();
             List<Recipe> recipes = apiResponse.getRecipes();
             listView.getItems().addAll(recipes);
-
-
+            if(listView.getItems().size() > 0)
+            {
+                mealsFoundLabel.setText("Meals Found = " + listView.getItems().size());
+            }
+            else
+            {
+                mealsFoundLabel.setText("No Results Found! Try 'chicken'");
+            }
 
 
     }
@@ -71,9 +82,10 @@ public class RandomMealViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         selectedVBox.setVisible(false);
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10);
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 15);
         valueFactory.setValue(1);
         amountOfMealsSpinner.setValueFactory(valueFactory);
+
 
         listView.getSelectionModel().selectedItemProperty()
                                     .addListener((obs, old, selectedRecipe)->
