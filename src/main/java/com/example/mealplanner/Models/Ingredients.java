@@ -1,5 +1,8 @@
-package com.example.mealplanner;
+package com.example.mealplanner.Models;
 
+/**
+ * Contains ingredient names to populate listview
+ */
 public class Ingredients {
     private String original;
 

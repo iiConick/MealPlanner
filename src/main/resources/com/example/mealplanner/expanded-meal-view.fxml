@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="658.0" prefWidth="457.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mealplanner.ExpandedMealViewController">
+<AnchorPane prefHeight="658.0" prefWidth="457.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mealplanner.Controllers.ExpandedMealViewController">
    <children>
       <Label fx:id="sourceNameLabel" alignment="CENTER" layoutX="91.0" layoutY="6.0" prefHeight="30.0" prefWidth="307.0" text="Food Network">
          <font>
@@ -29,6 +30,9 @@
                      <children>
                         <Button mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="49.0" prefWidth="76.0" text="Back" VBox.vgrow="NEVER" />
                      </children>
+                     <padding>
+                        <Insets left="5.0" top="5.0" />
+                     </padding>
                   </VBox>
                   <ImageView fx:id="mealImageView" fitHeight="177.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true" />
                   <VBox prefHeight="50.0" prefWidth="232.0" />
@@ -70,18 +74,18 @@
             </VBox>
          </children>
       </HBox>
-      <HBox layoutY="316.0" prefHeight="316.0" prefWidth="457.0">
+      <HBox layoutY="316.0" prefHeight="342.0" prefWidth="457.0">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="316.0" prefWidth="235.0">
+            <VBox alignment="TOP_CENTER" prefHeight="347.0" prefWidth="232.0">
                <children>
                   <Label prefHeight="30.0" prefWidth="60.0" text="Ingredients" />
-                  <ListView fx:id="ingredientsListView" prefHeight="263.0" prefWidth="219.0" />
+                  <ListView fx:id="ingredientsListView" prefHeight="313.0" prefWidth="231.0" />
                </children>
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="316.0" prefWidth="228.0">
                <children>
                   <Label prefHeight="30.0" prefWidth="62.0" text="Instructions" />
-                  <TextArea fx:id="instructionsTextArea" editable="false" prefHeight="263.0" prefWidth="228.0" wrapText="true" />
+                  <TextArea fx:id="instructionsTextArea" editable="false" prefHeight="313.0" prefWidth="227.0" wrapText="true" />
                </children>
             </VBox>
          </children>

@@ -1,8 +1,11 @@
-package com.example.mealplanner;
+package com.example.mealplanner.Models;
 
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * This class contains the information I want to be displayed in the second scene.
+ */
 public class RecipeDetails {
     private int id;
     private String image;

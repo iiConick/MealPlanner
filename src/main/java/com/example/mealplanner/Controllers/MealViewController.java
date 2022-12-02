@@ -1,5 +1,8 @@
-package com.example.mealplanner;
+package com.example.mealplanner.Controllers;
 
+import com.example.mealplanner.*;
+import com.example.mealplanner.Models.APIResponse;
+import com.example.mealplanner.Models.Recipe;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,12 +13,10 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class RandomMealViewController implements Initializable {
+public class MealViewController implements Initializable {
 
     @FXML
     private Spinner<Integer> amountOfMealsSpinner;
@@ -51,7 +52,13 @@ public class RandomMealViewController implements Initializable {
     private VBox selectedVBox;
 
 
-
+    /**
+     * This method gets the selected item from the listview and passes its Id
+     * to the next scene via button press
+     * @param event
+     * @throws IOException
+     * @throws InterruptedException
+     */
     @FXML
     void getDetails(ActionEvent event) throws IOException, InterruptedException {
         Recipe recipe = listView.getSelectionModel().getSelectedItem();
@@ -60,6 +67,14 @@ public class RandomMealViewController implements Initializable {
 
     }
 
+    /**
+     * This method will call the API to populate the listview with data based on the parameters provided
+     * by the user. If no meals were found by the search term provided, the program displays that there
+     * were no results found
+     * @param event
+     * @throws IOException
+     * @throws InterruptedException
+     */
     @FXML
     void searchButtonPress(ActionEvent event) throws IOException, InterruptedException {
         APIResponse apiResponse = APIUtility.getRandomRecipe(searchTextField.getText(), amountOfMealsSpinner.getValue());
@@ -79,6 +94,13 @@ public class RandomMealViewController implements Initializable {
 
     }
 
+    /**
+     * This method initializes the spinner value and disabling user input on it. There is a listener that
+     * detects when the listview is selected and populates the image and cooking times according to the record selected.
+     * This listener also makes the VBox visible. If the value of the cooking times is -1, the labels are not visible.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         selectedVBox.setVisible(false);
@@ -93,37 +115,31 @@ public class RandomMealViewController implements Initializable {
                  if(selectedRecipe!= null)
                  {
                      selectedVBox.setVisible(true);
-                     try {
-                         mealImageView.setImage(new Image(selectedRecipe.getImage()));
-                         imageTitleLabel.setText(selectedRecipe.getTitle());
-                         if(selectedRecipe.getCookingMinutes() != -1)
-                         {
-                             cookTimeLabel.setVisible(true);
-                             cookTimeLabel.setText("Cook Time: " + selectedRecipe.getCookingMinutes());
-                         }
-                         else
-                         {
-                             cookTimeLabel.setVisible(false);
-                         }
-
-                         if(selectedRecipe.getPreparationMinutes() != -1)
-                         {
-                             prepTimeLabel.setVisible(true);
-                             prepTimeLabel.setText("Prep Time: " + selectedRecipe.getPreparationMinutes());
-                         }
-                         else
-                         {
-                             prepTimeLabel.setVisible(false);
-                         }
-
-                         servingsLabel.setText("Servings: " + selectedRecipe.getServings());
-                         totalTimeLabel.setText("Total Time: " + selectedRecipe.getReadyInMinutes());
-
-                     } catch (IllegalArgumentException e)
+                     mealImageView.setImage(new Image(selectedRecipe.getImage()));
+                     imageTitleLabel.setText(selectedRecipe.getTitle());
+                     if(selectedRecipe.getCookingMinutes() != -1)
                      {
-                         mealImageView.setImage(new Image(Main.class
-                                 .getResourceAsStream("images/default_poster.png")));
+                         cookTimeLabel.setVisible(true);
+                         cookTimeLabel.setText("Cook Time: " + selectedRecipe.getCookingMinutes());
                      }
+                     else
+                     {
+                         cookTimeLabel.setVisible(false);
+                     }
+
+                     if(selectedRecipe.getPreparationMinutes() != -1)
+                     {
+                         prepTimeLabel.setVisible(true);
+                         prepTimeLabel.setText("Prep Time: " + selectedRecipe.getPreparationMinutes());
+                     }
+                     else
+                     {
+                         prepTimeLabel.setVisible(false);
+                     }
+
+                     servingsLabel.setText("Servings: " + selectedRecipe.getServings());
+                     totalTimeLabel.setText("Total Time: " + selectedRecipe.getReadyInMinutes());
+
                  }
                  else
                  {

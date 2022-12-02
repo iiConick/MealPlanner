@@ -1,5 +1,9 @@
-package com.example.mealplanner;
+package com.example.mealplanner.Models;
 
+/**
+ * Stores the main information of the json file. Everything inside the Recipe[] array that
+ * I want to use for the first scene is in this class
+ */
 public class Recipe {
 
     private String title;

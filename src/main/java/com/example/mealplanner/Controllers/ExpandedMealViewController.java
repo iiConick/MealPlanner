@@ -1,5 +1,9 @@
-package com.example.mealplanner;
+package com.example.mealplanner.Controllers;
 
+import com.example.mealplanner.APIUtility;
+import com.example.mealplanner.Models.Ingredients;
+import com.example.mealplanner.Models.RecipeDetails;
+import com.example.mealplanner.SceneChanger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -43,6 +47,14 @@ public class ExpandedMealViewController implements Initializable {
     @FXML
     private Label totalTimeLabel;
 
+    /**
+     * This method is to populate the second scene of my project. The id parameter
+     * was passed from my first scene so that the details about the specific meal
+     * that the user selected is properly displayed.
+     * @param id
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public void getRecipeDetails(int id) throws IOException, InterruptedException {
         RecipeDetails recipeDetails = APIUtility.getRecipeDetails(id);
         mealImageView.setImage(new Image(recipeDetails.getImage()));
@@ -75,9 +87,15 @@ public class ExpandedMealViewController implements Initializable {
 
     }
 
+    /**
+     * This method is to switch back to the original scene via button press
+     * @param event
+     * @throws IOException
+     * @throws InterruptedException
+     */
     @FXML
     void backButtonPressed(ActionEvent event) throws IOException, InterruptedException {
-        SceneChanger.changeScenes(event,"random-meal-view.fxml");
+        SceneChanger.changeScenes(event,"meal-view.fxml");
 
     }
 
